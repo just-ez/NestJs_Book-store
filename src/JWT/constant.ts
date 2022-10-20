@@ -1,0 +1,3 @@
+const jwtConstants = {
+    secret: 'mySecret'
+}
