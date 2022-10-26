@@ -1,3 +1,0 @@
-var jwtConstants = {
-    secret: 'mySecret'
-};

@@ -7,10 +7,12 @@ import { serailizedUser } from './Serialize/user.serialize';
 @Controller('users')
 export class UsersController {
     constructor (private userService: UsersService) {}
+    @UseInterceptors(ClassSerializerInterceptor)
     @Get()
-    getUsers (@Query('page') page: string) {
-        console.log(page); 
-        return this.userService.getUsers()
+   async getUsers (@Query('sortBy') sortBy: string) {
+        const users = await this.userService.getUsers(sortBy)
+        if (users.length > 0) return users.map(user => new serailizedUser(user))
+        throw new HttpException('user not found', HttpStatus.NOT_FOUND)
     }
 
     

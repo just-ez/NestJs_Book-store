@@ -1,4 +1,7 @@
 import { IsEmail, isNotEmpty, IsNotEmpty, IsNumberString, Min, MinLength } from "class-validator"
+import { Books } from "src/Typeorm/book.entities"
+import { User } from "src/Typeorm/user.entities"
+import { DeepPartial } from "typeorm"
 
 export class CreateUserDto {
 
@@ -15,6 +18,8 @@ export class CreateUserDto {
     @IsNotEmpty()
     @MinLength(6)
     password: string
+
+    books: DeepPartial<Books[]>
 
     @IsNotEmpty()
     Admin: boolean

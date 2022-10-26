@@ -1,9 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { createBookDto } from "src/books/Dtos/createBook.dto";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Books } from "./book.entities";
 
 @Entity()
 export class User {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number
 
     @Column()
@@ -17,6 +19,8 @@ export class User {
 
     @Column()
     password: string
+   @OneToMany(() => Books, (books)=> books.book_author)
+    books: Books[]
 
     @Column({default: false})
     Admin: boolean

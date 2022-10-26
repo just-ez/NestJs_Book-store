@@ -10,14 +10,18 @@ import { JwtService } from '@nestjs/jwt';
 export class UsersService {
     constructor(@InjectRepository(User) private userRepository: Repository<User>, private jwtService: JwtService) {}
     
-  async  getUsers (): Promise<User[]> {
-    return this.userRepository.find()
+  async  getUsers (sortBy: string): Promise<User[]> {
+    return await this.userRepository.find({
+      relations: {
+          books: true,
+      },
+  })
     }
 
     async getUserById (id: number): Promise<User> {
       return await this.userRepository.findOneBy({id: id})
     }
-
+  
    async createUser (userDetails: CreateUserDto) {
 
    const findEmail = await this.userRepository.findBy({email: userDetails.email})
@@ -36,6 +40,7 @@ export class UsersService {
 
     async login (userDetails: CreateUserDto) {
         const user = await this.userRepository.findOneBy({email: userDetails.email})
+        console.log(user);
         if (user) {
           const checkPass = await bcrypt.compare(userDetails.password, user.password) 
           if (checkPass) {
