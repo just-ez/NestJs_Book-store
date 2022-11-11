@@ -13,6 +13,7 @@ declare module "express-serve-static-core" {
 export class AuthMiddleware implements NestMiddleware {
   constructor (private jwtService: JwtService, @InjectRepository(User) private userRepository: Repository<User>){}
  async use(req: Request, res: Response, next: NextFunction) {
+  
     console.log(req.baseUrl, req.method);
 
     const token = req.headers.authorization

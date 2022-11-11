@@ -1,0 +1,13 @@
+// [x] - user can sign up
+// [x] - user can log in
+// [x] - user can update profile 
+// [x] - user can create Book
+// [x] - only author delete Book
+// [x] - only author can update Book
+// [x] - user can save book for later
+// [] - user can rate book
+// [] - user should get notified if new book is added
+// [] - user can place book for sale
+// [] - each book should have a discussion space //later things
+// [x] - user can delete account
+// [] - user can get veryfied

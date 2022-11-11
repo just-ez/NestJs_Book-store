@@ -26,4 +26,10 @@ export class Books {
     @Column()
     geners: string
 
+    @Column({default: '0'})
+    reviews: string
+
+    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+    createdAt: number
+
 }

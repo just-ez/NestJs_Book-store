@@ -6,6 +6,8 @@ import { Pages } from './Typeorm/page.entities';
 import { User } from './Typeorm/user.entities';
 import { UsersModule } from './users/users.module';
 import { PagesModule } from './pages/pages.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { Cloudinary } from './cloudinary';
 
 @Module({
   imports: [
@@ -20,8 +22,8 @@ import { PagesModule } from './pages/pages.module';
     database: 'book_store',
     entities: [User, Books, Pages],
     synchronize: true
-  }), PagesModule],
+  }), PagesModule, CloudinaryModule],
   controllers: [],
-  providers: [],
+  providers: [Cloudinary],
 })
 export class AppModule {}

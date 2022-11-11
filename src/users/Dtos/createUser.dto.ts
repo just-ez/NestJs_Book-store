@@ -12,8 +12,11 @@ export class CreateUserDto {
     @IsEmail()
     email: string
 
-    @IsNumberString()
+    // @IsNumberString()
     phone_number: string
+
+    @IsNotEmpty()
+    bio: string
 
     @IsNotEmpty()
     @MinLength(6)
@@ -21,6 +24,6 @@ export class CreateUserDto {
 
     books: DeepPartial<Books[]>
 
-    @IsNotEmpty()
-    Admin: boolean
+    // @IsNotEmpty()
+    isVerified: boolean
 }

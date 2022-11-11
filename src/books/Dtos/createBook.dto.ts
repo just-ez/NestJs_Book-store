@@ -9,13 +9,16 @@ export class createBookDto {
     @IsString()
     book_name: string
 
-    @IsUrl()
+    // @IsUrl()
     @IsNotEmpty()
     book_cover: string
 
     book_author: DeepPartial<User>
 
     book_pages: DeepPartial<Pages[]>
+
+    @IsNumberString()
+    reviews: string
     
     @IsNotEmpty()
     description: string

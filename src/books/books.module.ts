@@ -17,7 +17,11 @@ import { BooksService } from './services/books/books.service';
   providers: [BooksService]
 })
 export class BooksModule  implements NestModule{
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes({path: 'books', method: RequestMethod.POST})
+  configure(consumer: MiddlewareConsumer) { 
+    consumer.apply(AuthMiddleware)
+    .exclude(
+      {path: 'books', method: RequestMethod.GET},
+    {path: 'books/search', method: RequestMethod.GET})
+    .forRoutes('books')
   }
 }
