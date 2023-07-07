@@ -15,7 +15,7 @@ export class CreateUserDto {
     // @IsNumberString()
     phone_number: string
 
-    @IsNotEmpty()
+    // @IsNotEmpty()
     bio: string
 
     @IsNotEmpty()
@@ -26,4 +26,6 @@ export class CreateUserDto {
 
     // @IsNotEmpty()
     isVerified: boolean
+    
+    isGoogleSigned: boolean
 }

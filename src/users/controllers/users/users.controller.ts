@@ -8,8 +8,18 @@ import { serailizedUser } from './Serialize/user.serialize';
 @Controller('users')
 export class UsersController {
     constructor (private userService: UsersService) {}
-    @UseInterceptors(ClassSerializerInterceptor)
 
+    @UseInterceptors(ClassSerializerInterceptor)
+    @Get('')
+   async getuserById (@Req() req: Request) {
+    const user =  await this.userService.getUserById(req.decoded.id)
+    console.log(user);
+    if (user) return  new serailizedUser(user)
+    return new HttpException('user not found', HttpStatus.NOT_FOUND)
+    }
+
+
+    @UseInterceptors(ClassSerializerInterceptor)
     @Get('search')
    async getUsers (@Query('sortBy') sortBy: string) {
         const users = await this.userService.searchUsers(sortBy)
@@ -17,15 +27,7 @@ export class UsersController {
         throw new HttpException('user not found', HttpStatus.NOT_FOUND)
     }
     
-    @UseInterceptors(ClassSerializerInterceptor)
-    @Get(':id')
-   async getuserById (@Param('id', ParseIntPipe) id: number) {
-    const user =  await this.userService.getUserById(id)
-    console.log(user);
-    if (user) return  new serailizedUser(user)
-    return new HttpException('user not found', HttpStatus.NOT_FOUND)
-    }
-
+ 
     @Post('/profileimage')
     async updateUserProfileimg(@Body() image: CreateUserDto) {
         
@@ -35,14 +37,14 @@ export class UsersController {
     @UsePipes(new ValidationPipe())
   async signup(@Body() userDto: CreateUserDto) {
      const user =  await this.userService.createUser(userDto)
-     if (user) return {msg: 'Account created, click on login route to login',  statusCode: 200}
+     if (user) return {msg: 'Login Sucessfull',  statusCode: 200}
      return new HttpException('user with email already exists', HttpStatus.BAD_REQUEST)
     }
 
     @Post('login')
    async login(@Body() userDto: CreateUserDto)  {
     const user = await this.userService.login(userDto)
-    if (user.token) return { msg: 'user signed in', token: user.token }
+    if (user.token) return { msg: 'user signed in', token: user.token, user: user.user }
     if (user.err) throw new HttpException(user.err,user.status)
    }
 

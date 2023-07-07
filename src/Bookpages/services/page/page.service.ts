@@ -1,6 +1,6 @@
 import { Body, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { createPageDto } from 'src/pages/Dtos/createPage.dto';
+import { createPageDto } from 'src/Bookpages/Dtos/createPage.dto';
 import { Books } from 'src/Typeorm/book.entities';
 import { Pages } from 'src/Typeorm/page.entities';
 import { User } from 'src/Typeorm/user.entities';

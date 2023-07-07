@@ -54,4 +54,16 @@ export class BooksController {
         if (bookStatus) return res.status(200).json({msg: 'deleted successfully'})
         return res.status(400).json({err: 'bad request', msg: 'only author and Admin can delete book'})
     }
+
+    @Patch(':Id/review')
+    async makeReview(
+        @Body() data: createBookDto,
+        @Param('Id') id: number,
+        @Req() req: Request 
+    ) {
+        
+        if (req.decoded) {
+            return await this.bookService.makeReview(id,data)
+        }
+    }
 }

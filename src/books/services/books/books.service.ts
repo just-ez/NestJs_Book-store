@@ -13,7 +13,10 @@ export class BooksService {
     @InjectRepository(User) private userRepository: Repository<User>) {}
   
     async getBooks (options: IPaginationOptions) {
-      return paginate<Books>(this.bookRepository, options)
+      const queryBuilder = this.bookRepository.createQueryBuilder('user');
+      queryBuilder.innerJoinAndSelect('user.book_author', 'book_author')
+      .getMany();
+      return paginate<Books>(queryBuilder, options)
     }
 
     async searchBooks (query: string) {
@@ -70,5 +73,10 @@ export class BooksService {
         return this.bookRepository.delete({id: id})
       }
     }
-    
+
+    async makeReview(id: number, data: createBookDto) {
+      console.log(data.reviews, id);
+      return await this.bookRepository.update({id: id},{reviews: data.reviews})
+    }
+
 }

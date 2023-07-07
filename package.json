@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/jwt": "^9.0.0",
     "@nestjs/passport": "^9.0.0",
@@ -33,6 +34,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "cloudinary": "^1.32.0",
+    "firebase-admin": "^11.3.0",
     "mysql2": "^2.3.3",
     "nestjs-typeorm-paginate": "^4.0.2",
     "paginate-info": "^1.0.4",
@@ -42,6 +44,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
+    "shelljs": "^0.8.5",
     "typeorm": "^0.3.10"
   },
   "devDependencies": {
@@ -55,6 +58,7 @@
     "@types/node": "^16.0.0",
     "@types/passport-jwt": "^3.0.7",
     "@types/passport-local": "^1.0.34",
+    "@types/shelljs": "^0.8.11",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",

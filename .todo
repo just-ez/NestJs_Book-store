@@ -5,7 +5,7 @@
 // [x] - only author delete Book
 // [x] - only author can update Book
 // [x] - user can save book for later
-// [] - user can rate book
+// [x] - user can rate book
 // [] - user should get notified if new book is added
 // [] - user can place book for sale
 // [] - each book should have a discussion space //later things

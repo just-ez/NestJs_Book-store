@@ -7,6 +7,7 @@ import { User } from 'src/Typeorm/user.entities';
 import { BooksController } from './controllers/books/books.controller';
 import { AuthMiddleware } from './middlewares/auth.middleware';
 import { BooksService } from './services/books/books.service';
+import { NotificationService } from './services/notification/notification.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Books, User, Pages]), JwtModule.register({
@@ -14,7 +15,7 @@ import { BooksService } from './services/books/books.service';
     signOptions: { expiresIn: '7days' }
 })],
   controllers: [BooksController],
-  providers: [BooksService]
+  providers: [BooksService, NotificationService]
 })
 export class BooksModule  implements NestModule{
   configure(consumer: MiddlewareConsumer) { 

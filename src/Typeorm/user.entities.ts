@@ -35,5 +35,8 @@ export class User {
 
     @Column({default: false})
     isVerified: boolean
+
+    @Column({default: false})
+    isGoogleSigned: boolean
   user: Books;
 }

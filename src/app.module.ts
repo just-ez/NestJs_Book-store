@@ -5,7 +5,7 @@ import { Books } from './Typeorm/book.entities';
 import { Pages } from './Typeorm/page.entities';
 import { User } from './Typeorm/user.entities';
 import { UsersModule } from './users/users.module';
-import { PagesModule } from './pages/pages.module';
+import { PagesModule } from './Bookpages/pages.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { Cloudinary } from './cloudinary';
 
